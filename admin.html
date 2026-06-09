@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novo Beat | JPG Sounds</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("jpg_theme") === "dark") {
+          document.documentElement.classList.add("theme-dark");
+        }
+      } catch (_error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+    <a class="brand" href="index.html" aria-label="Ir para o in&iacute;cio">JPG</a>
+    <div class="nav-center" aria-label="Links principais">
+      <a class="center-link is-active" href="beats.html">Beats</a>
+      <a class="center-link" href="licenses.html">Licen&ccedil;as</a>
+      <a class="center-link" href="contact.html">Contato</a>
+    </div>
+
+    <div class="actions" role="group" aria-label="A&ccedil;&otilde;es">
+      <button class="icon-btn" id="searchButton" aria-label="Buscar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6" />
+          <path d="M20 20l-4.2-4.2" />
+        </svg>
+      </button>
+<div class="user-menu">
+        <button class="icon-btn" id="userMenuButton" aria-label="Perfil" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M6 19a6 6 0 0 1 12 0" />
+          </svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown"></div>
+      </div>
+
+      <form class="search-form" id="searchForm" role="search" action="#" method="get">
+        <input id="searchInput" class="search-input" type="search" name="q" placeholder="Pesquisar..." autocomplete="off" />
+      </form>
+    </div>
+  </nav>
+
+  <main class="page-main beats-main admin-beats-main">
+    <section class="admin-panel" aria-labelledby="newBeatTitle">
+      <h1 class="beats-heading" id="newBeatTitle">Novo Beat</h1>
+
+      <div class="admin-editor">
+        <aside class="admin-preview" aria-label="Pr&eacute;via do beat">
+          <article class="beat-card admin-preview-card">
+            <div class="admin-cover-drop" id="beatCoverDrop" tabindex="0" role="button" aria-label="Enviar capa ou GIF do beat">
+              <input id="beatCoverFile" name="coverFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+              <img id="adminPreviewCover" class="beat-cover admin-cover-drop__image" src="" alt="Pr&eacute;via da capa ou GIF do beat" hidden />
+              <div id="adminPreviewPlaceholder" class="admin-cover-drop__placeholder">
+                <span>Capa/GIF</span>
+                <strong>Arraste ou selecione</strong>
+              </div>
+              <div class="admin-cover-drop__overlay">Solte imagem ou GIF</div>
+            </div>
+            <div class="beat-info">
+              <h3 id="adminPreviewTitle" class="beat-title"></h3>
+              <p id="adminPreviewMeta" class="beat-meta"></p>
+              <div class="admin-preview-tags" id="adminPreviewTags" aria-label="Tags selecionadas"></div>
+            </div>
+            <div class="admin-audio-preview">
+              <audio id="adminPreviewAudio" src="assets/audio/xxx.mpeg" controls preload="metadata" hidden></audio>
+            </div>
+          </article>
+        </aside>
+
+        <div class="admin-compose">
+          <form class="admin-form" id="beatAdminForm">
+            <input id="beatCover" name="cover" type="hidden" required />
+            <input id="beatAudio" name="audio" type="hidden" />
+            <input id="beatWav" name="wav" type="hidden" />
+            <input id="beatStems" name="stems" type="hidden" />
+
+            <div class="admin-form__row admin-form__row--identity">
+              <div class="field">
+                <label for="beatTitle">Nome</label>
+                <input id="beatTitle" name="title" type="text" placeholder="Wake Up" required />
+              </div>
+
+              <div class="field">
+                <label for="beatBpm">BPM</label>
+                <input id="beatBpm" name="bpm" type="number" min="1" placeholder="144" required />
+              </div>
+
+              <div class="field">
+                <label for="beatKey">Tom <span class="field-help" title="Tonalidade musical do beat. Ex: F#m, Bm, Cm.">?</span></label>
+                <input id="beatKey" name="key" type="text" placeholder="F#m" required />
+              </div>
+            </div>
+
+            <div class="admin-form__row admin-form__row--files file-panel" aria-label="Arquivos do beat">
+              <div class="field file-field">
+                <div class="file-field__head">
+                  <span class="file-field__title">MP3</span>
+                  <label class="license-toggle">
+                    <input id="enableMp3License" class="license-toggle__input" type="checkbox" checked />
+                    <span class="license-toggle__control" aria-hidden="true"></span>
+                    <span class="license-toggle__text">Dispon&iacute;vel</span>
+                  </label>
+                </div>
+                <input id="beatMp3File" name="mp3File" type="file" accept="audio/mpeg,audio/mp3,.mp3" />
+                <label class="file-upload" for="beatMp3File">
+                  <span class="file-upload__check" aria-hidden="true">&check;</span>
+                  <span class="file-upload__format">MP3</span>
+                  <span class="file-upload__body">
+                    <span class="file-upload__text" data-default="MP3 pendente">MP3 pendente</span>
+                    <span class="file-upload__hint">Preview da loja</span>
+                  </span>
+                </label>
+                <div class="file-preview file-preview--audio" id="mp3FilePreview" hidden>
+                  <button class="file-preview__play" id="mp3FilePlay" type="button" aria-label="Tocar MP3">&#9654;</button>
+                  <span class="file-preview__wave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <audio id="mp3FilePlayer" preload="metadata"></audio>
+                </div>
+              </div>
+
+              <div class="field file-field">
+                <div class="file-field__head">
+                  <span class="file-field__title">WAV</span>
+                  <label class="license-toggle">
+                    <input id="enableWavLicense" class="license-toggle__input" type="checkbox" checked />
+                    <span class="license-toggle__control" aria-hidden="true"></span>
+                    <span class="license-toggle__text">Dispon&iacute;vel</span>
+                  </label>
+                </div>
+                <input id="beatWavFile" name="wavFile" type="file" accept="audio/wav,.wav" />
+                <label class="file-upload" for="beatWavFile">
+                  <span class="file-upload__check" aria-hidden="true">&check;</span>
+                  <span class="file-upload__format">WAV</span>
+                  <span class="file-upload__body">
+                    <span class="file-upload__text" data-default="WAV pendente">WAV pendente</span>
+                    <span class="file-upload__hint">Arquivo de alta qualidade</span>
+                  </span>
+                </label>
+                <div class="file-preview file-preview--audio" id="wavFilePreview" hidden>
+                  <button class="file-preview__play" id="wavFilePlay" type="button" aria-label="Tocar WAV">&#9654;</button>
+                  <span class="file-preview__wave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <audio id="wavFilePlayer" preload="metadata"></audio>
+                </div>
+              </div>
+
+              <div class="field file-field">
+                <div class="file-field__head">
+                  <span class="file-field__title">Stems ZIP <span class="field-help" title="Arquivo .zip com as faixas separadas do beat.">?</span></span>
+                  <label class="license-toggle">
+                    <input id="enableStemsLicense" class="license-toggle__input" type="checkbox" checked />
+                    <span class="license-toggle__control" aria-hidden="true"></span>
+                    <span class="license-toggle__text">Dispon&iacute;vel</span>
+                  </label>
+                </div>
+                <input id="beatStemsFile" name="stemsFile" type="file" accept=".zip,application/zip,application/x-zip-compressed" />
+                <label class="file-upload" for="beatStemsFile">
+                  <span class="file-upload__check" aria-hidden="true">&check;</span>
+                  <span class="file-upload__format">ZIP</span>
+                  <span class="file-upload__body">
+                    <span class="file-upload__text" data-default="ZIP pendente">ZIP pendente</span>
+                    <span class="file-upload__hint">Stems separadas</span>
+                  </span>
+                </label>
+                <div class="file-preview file-preview--zip" id="stemsFilePreview" hidden>
+                  <span class="file-preview__folder" aria-hidden="true">Pasta ZIP</span>
+                  <span class="file-preview__zip-meta" id="stemsFileMeta"></span>
+                </div>
+              </div>
+            </div>
+            <div class="field tag-picker" aria-label="Tags do beat">
+              <span class="tag-picker__label">Tags</span>
+              <div class="tag-tabs tag-tabs--single" role="tablist" aria-label="Tags">
+                <button class="tag-tab" type="button" role="tab" aria-selected="false" aria-controls="tagGroupTags" id="tagTabTags">Tags</button>
+              </div>
+
+              <div class="tag-group" id="tagGroupTags" role="tabpanel" aria-labelledby="tagTabTags" aria-hidden="true">
+                <p class="tag-group__title">Escolha at&eacute; 3 tags</p>
+                <div class="tag-list">
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="808" />808</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Acoustic Guitar" />Acoustic Guitar</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Afrobeat" />Afrobeat</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Aggressive" />Aggressive</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Alternative Hip Hop" />Alternative Hip Hop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Ambient" />Ambient</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Analog" />Analog</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Analog Synth" />Analog Synth</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Atmospheric" />Atmospheric</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Bass Guitar" />Bass Guitar</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Bells" />Bells</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Boom Bap" />Boom Bap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Bouncy" />Bouncy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Brass" />Brass</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Cello" />Cello</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Chill" />Chill</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Choir" />Choir</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Cinematic" />Cinematic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Clean" />Clean</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Cloud Rap" />Cloud Rap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Cosmic" />Cosmic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Dancehall" />Dancehall</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Dark" />Dark</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Deep" />Deep</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Deep House" />Deep House</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Detroit" />Detroit</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Digital" />Digital</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Dirty" />Dirty</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Distorted" />Distorted</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Dreamy" />Dreamy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Drill" />Drill</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Drum Break" />Drum Break</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="East Coast" />East Coast</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Electric Guitar" />Electric Guitar</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Electronic" />Electronic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Emotional" />Emotional</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Energetic" />Energetic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Epic" />Epic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Euphoric" />Euphoric</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Experimental" />Experimental</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Fast" />Fast</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Floating" />Floating</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Flute" />Flute</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Funk" />Funk</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Future Bass" />Future Bass</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Gospel" />Gospel</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Grime" />Grime</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Gritty" />Gritty</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Groovy" />Groovy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Guitar" />Guitar</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Happy" />Happy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Hard Hitting" />Hard Hitting</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Harp" />Harp</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Heavy 808" />Heavy 808</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Hi-Fi" />Hi-Fi</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Hip Hop" />Hip Hop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="House" />House</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Hyperpop" />Hyperpop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Indie" />Indie</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Indie Pop" />Indie Pop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Inspirational" />Inspirational</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Introspective" />Introspective</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Jazz Rap" />Jazz Rap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Jersey Club" />Jersey Club</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Kalimba" />Kalimba</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Keys" />Keys</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Late Night" />Late Night</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Latin Trap" />Latin Trap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Layered" />Layered</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Lead" />Lead</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Lo-Fi" />Lo-Fi</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Luxury" />Luxury</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Melancholic" />Melancholic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Melodic" />Melodic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Memphis" />Memphis</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Minimal" />Minimal</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Minimalistic" />Minimalistic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Modern" />Modern</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Motivational" />Motivational</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Mysterious" />Mysterious</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Neo Soul" />Neo Soul</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Night" />Night</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Nostalgic" />Nostalgic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Old School" />Old School</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Orchestra" />Orchestra</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Organ" />Organ</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Organic" />Organic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Pad" />Pad</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Percussion" />Percussion</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Phonk" />Phonk</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Piano" />Piano</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Pluck" />Pluck</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Pluggnb" />Pluggnb</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Pop" />Pop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Pop Rap" />Pop Rap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Powerful" />Powerful</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Punchy" />Punchy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="R&B" />R&amp;B</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Rage" />Rage</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Rainy" />Rainy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Rap" />Rap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Raw" />Raw</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Reflective" />Reflective</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Reggaeton" />Reggaeton</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Relaxed" />Relaxed</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Rhodes" />Rhodes</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Rich" />Rich</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Romantic" />Romantic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Sad" />Sad</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Sampled" />Sampled</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Saturated" />Saturated</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Saxophone" />Saxophone</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Sexy" />Sexy</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Slow" />Slow</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Smooth" />Smooth</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Soul" />Soul</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Space" />Space</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Spiritual" />Spiritual</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Stereo" />Stereo</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Strings" />Strings</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Sub Bass" />Sub Bass</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Summer" />Summer</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Suspenseful" />Suspenseful</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Swing" />Swing</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Synth" />Synth</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Synthetic" />Synthetic</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Synthwave" />Synthwave</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Tense" />Tense</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Textured" />Textured</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Trap" />Trap</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Trap Soul" />Trap Soul</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Trumpet" />Trumpet</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="UK Drill" />UK Drill</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Uplifting" />Uplifting</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Vintage" />Vintage</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Violin" />Violin</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Vocal Chop" />Vocal Chop</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Vocal Sample" />Vocal Sample</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="West Coast" />West Coast</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Wide" />Wide</label>
+                  <label class="tag-chip"><input type="checkbox" name="tags" value="Winter" />Winter</label>
+                </div>
+              </div>
+            </div>
+
+            <button class="signup-button admin-submit" id="adminSubmitButton" type="submit">
+              <span class="admin-submit__spinner" aria-hidden="true"></span>
+              <span class="admin-submit__text">Publicar Beat</span>
+            </button>
+            <p class="admin-feedback" id="adminFeedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-list-block" aria-labelledby="yourBeatsTitle">
+      <h2 class="beats-heading" id="yourBeatsTitle">Seus Beats</h2>
+      <div class="beats-grid admin-beat-list" id="adminBeatList"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Rodap&eacute; do site">
+    <p class="site-footer__brand">JPG Sounds</p>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/jpgoncalvezz" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jpgoncalvezz" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="contact.html" data-contact-trigger>Contato</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/global-player.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/contact-modal.js"></script>
+  <script src="assets/js/contracts.js"></script>
+  <script src="assets/js/beats-data.js"></script>
+  <script src="assets/js/beats-store.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

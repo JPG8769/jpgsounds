@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra da Licen&ccedil;a | JPG Sounds</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("jpg_theme") === "dark") {
+          document.documentElement.classList.add("theme-dark");
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+    <a class="brand" href="index.html" aria-label="Ir para o in&iacute;cio">JPG</a>
+    <div class="nav-center" aria-label="Links principais">
+      <a class="center-link" href="beats.html">Beats</a>
+      <a class="center-link" href="licenses.html">Licen&ccedil;as</a>
+      <a class="center-link" href="contact.html">Contato</a>
+    </div>
+
+    <div class="actions" role="group" aria-label="A&ccedil;&otilde;es">
+      <button class="icon-btn" id="searchButton" aria-label="Buscar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6" />
+          <path d="M20 20l-4.2-4.2" />
+        </svg>
+      </button>
+<div class="user-menu">
+        <button class="icon-btn" id="userMenuButton" aria-label="Perfil" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M6 19a6 6 0 0 1 12 0" />
+          </svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown"></div>
+      </div>
+
+      <form class="search-form" id="searchForm" role="search" action="#" method="get">
+        <input id="searchInput" class="search-input" type="search" name="q" placeholder="Pesquisar..." autocomplete="off" />
+      </form>
+    </div>
+  </nav>
+
+  <main class="page-main checkout-main">
+    <header class="checkout-page-head">
+      <a class="checkout-back" href="beats.html">Voltar aos beats</a>
+      <div>
+        <h1 class="checkout-title">Finalizar compra</h1>
+        <p class="checkout-subtitle">Licen&ccedil;a digital, contrato gerado automaticamente e entrega por email.</p>
+      </div>
+    </header>
+
+    <section class="checkout-shell" aria-label="Compra da Licen&ccedil;a">
+      <div class="checkout-left">
+        <ol class="checkout-progress" aria-label="Etapas da compra">
+          <li class="is-active" data-progress-step="1"><span>1</span>Identifica&ccedil;&atilde;o</li>
+          <li data-progress-step="2"><span>2</span>Endere&ccedil;o</li>
+          <li data-progress-step="3"><span>3</span>Pagamento</li>
+        </ol>
+
+        <div class="checkout-assurance" aria-label="Informa&ccedil;&otilde;es da compra">
+          <article>
+            <span aria-hidden="true">ID</span>
+            <strong>Dados seguros</strong>
+            <small>Usados apenas no contrato.</small>
+          </article>
+          <article>
+            <span aria-hidden="true">PDF</span>
+            <strong>Contrato</strong>
+            <small>Gerado ao finalizar.</small>
+          </article>
+          <article>
+            <span aria-hidden="true">MP3</span>
+            <strong>Entrega digital</strong>
+            <small>Arquivo enviado por email.</small>
+          </article>
+        </div>
+
+        <section class="checkout-block checkout-step-panel is-active" data-checkout-step="1">
+          <div class="checkout-block__head">
+            <div>
+              <h2>Identifica&ccedil;&atilde;o</h2>
+              <p>Informe quem vai assinar a licen&ccedil;a.</p>
+            </div>
+          </div>
+
+          <div class="checkout-form-grid" id="checkoutCustomerForm">
+            <label>Nome
+              <input name="firstName" type="text" autocomplete="given-name" placeholder="Seu nome" required />
+            </label>
+            <label>Sobrenome
+              <input name="lastName" type="text" autocomplete="family-name" placeholder="Seu sobrenome" required />
+            </label>
+            <label>CPF/CNPJ
+              <input name="document" type="text" inputmode="numeric" placeholder="000.000.000-00" required />
+            </label>
+            <label>Telefone
+              <input name="phone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required />
+            </label>
+            <label>Email de entrega
+              <input name="email" type="email" autocomplete="email" placeholder="seu@email.com" required />
+            </label>
+          </div>
+        </section>
+
+        <section class="checkout-block checkout-step-panel" data-checkout-step="2" hidden>
+          <div class="checkout-block__head">
+            <div>
+              <h2>Endere&ccedil;o</h2>
+              <p>Essas informa&ccedil;&otilde;es entram no contrato de uso.</p>
+            </div>
+          </div>
+
+          <div class="checkout-form-grid" id="checkoutAddressForm">
+            <label>CEP
+              <input name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required />
+            </label>
+            <label>Endere&ccedil;o
+              <input name="street" type="text" autocomplete="address-line1" placeholder="Rua, avenida..." required />
+            </label>
+            <label>N&uacute;mero
+              <input name="number" type="text" autocomplete="address-line2" placeholder="N&uacute;mero" required />
+            </label>
+            <label>Complemento
+              <input name="complement" type="text" placeholder="Apartamento, bloco..." />
+            </label>
+            <label>Cidade
+              <input name="city" type="text" autocomplete="address-level2" placeholder="Cidade" required />
+            </label>
+            <label>Estado
+              <input name="state" type="text" autocomplete="address-level1" placeholder="UF" required />
+            </label>
+          </div>
+        </section>
+
+        <section class="checkout-block checkout-step-panel" data-checkout-step="3" hidden>
+          <div class="checkout-block__head">
+            <div>
+              <h2>Pagamento</h2>
+              <p>Escolha como deseja concluir a compra.</p>
+            </div>
+          </div>
+
+          <div class="checkout-payment-tabs" aria-label="Forma de pagamento">
+            <label>
+              <input type="radio" name="payment" value="card" checked />
+              <span><i aria-hidden="true">▣</i><strong>Cart&atilde;o</strong><small>Cr&eacute;dito ou d&eacute;bito</small></span>
+            </label>
+            <label>
+              <input type="radio" name="payment" value="pix" />
+              <span><i aria-hidden="true">◇</i><strong>Pix</strong><small>Aprova&ccedil;&atilde;o r&aacute;pida</small></span>
+            </label>
+            <label>
+              <input type="radio" name="payment" value="paypal" />
+              <span><i aria-hidden="true">P</i><strong>PayPal</strong><small>Conta externa</small></span>
+            </label>
+          </div>
+
+          <div class="checkout-payment-panel" id="cardPaymentFields">
+            <div class="checkout-form-grid checkout-form-grid--payment">
+              <label>Nome no cart&atilde;o
+                <input name="cardName" type="text" autocomplete="cc-name" placeholder="Nome impresso no cart&atilde;o" />
+              </label>
+              <label>N&uacute;mero do cart&atilde;o
+                <input name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" />
+              </label>
+              <label>Validade
+                <input name="cardExpiry" type="text" autocomplete="cc-exp" placeholder="MM/AA" />
+              </label>
+              <label>CVV
+                <input name="cardCvv" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="000" />
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-payment-note" id="alternativePaymentNote" hidden>
+            A integra&ccedil;&atilde;o real do pagamento vai gerar o Pix ou redirecionar para o provedor escolhido.
+          </div>
+        </section>
+
+        <div class="checkout-navigation">
+          <button class="checkout-nav-btn checkout-nav-btn--ghost" id="checkoutBackButton" type="button">Voltar</button>
+          <button class="checkout-submit" id="checkoutNextButton" type="button">Continuar</button>
+        </div>
+        <div class="checkout-done" id="checkoutDone" aria-live="polite"></div>
+      </div>
+
+      <aside class="checkout-right" aria-label="Resumo da Licen&ccedil;a">
+        <div class="checkout-summary-card">
+          <h2 class="checkout-bag-title">Resumo</h2>
+          <div id="cartList" class="checkout-bag-list"></div>
+          <div class="checkout-summary">
+            <div class="checkout-summary-row">
+              <span>Subtotal</span>
+              <strong id="cartSubtotal">R$ 0,00</strong>
+            </div>
+            <div class="checkout-summary-row">
+              <span>Entrega</span>
+              <strong>Gr&aacute;tis</strong>
+            </div>
+            <div class="checkout-summary-row checkout-summary-row--total">
+              <span>Total</span>
+              <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Rodap&eacute; do site">
+    <p class="site-footer__brand">JPG Sounds</p>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/jpgoncalvezz" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jpgoncalvezz" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="contact.html" data-contact-trigger>Contato</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/contracts.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/global-player.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/contact-modal.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

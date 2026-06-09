@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minha Conta | JPG Sounds</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+    <a class="brand" href="index.html" aria-label="Ir para o in&iacute;cio">JPG</a>
+    <div class="nav-center" aria-label="Links principais">
+      <a class="center-link" href="beats.html">Beats</a>
+      <a class="center-link" href="licenses.html">Licen&ccedil;as</a>
+      <a class="center-link" href="contact.html">Contato</a>
+    </div>
+
+    <div class="actions" role="group" aria-label="A&ccedil;&otilde;es">
+      <button class="icon-btn" id="searchButton" aria-label="Buscar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6" />
+          <path d="M20 20l-4.2-4.2" />
+        </svg>
+      </button>
+<button class="icon-btn" id="userMenuButton" aria-label="Perfil" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M6 19a6 6 0 0 1 12 0" />
+          </svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown"></div>
+      </div>
+
+      <form class="search-form" id="searchForm" role="search" action="#" method="get">
+        <input id="searchInput" class="search-input" type="search" name="q" placeholder="Pesquisar..." autocomplete="off" />
+      </form>
+    </div>
+  </nav>
+
+  <main class="page-main">
+    <section class="page-card">
+      <h2 class="page-title">Minha conta</h2>
+      <p class="page-subtitle">Informacoes pessoais e seguranca da conta.</p>
+
+      <div class="account-grid">
+        <div class="info-list">
+          <h3 class="section-title">Dados pessoais</h3>
+          <p><strong>Nome:</strong> <span id="infoNome">-</span></p>
+          <p><strong>Email:</strong> <span id="infoEmail">-</span></p>
+          <p><strong>Celular:</strong> <span id="infoCelular">-</span></p>
+          <p><strong>CPF:</strong> <span id="infoCpf">-</span></p>
+          <p><strong>Nascimento:</strong> <span id="infoNascimento">-</span></p>
+        </div>
+
+        <form id="emailForm" class="mini-form">
+          <h3 class="section-title">Alterar email</h3>
+          <label for="novoEmail">Novo email</label>
+          <input id="novoEmail" name="novoEmail" type="email" required />
+          <button class="small-btn" type="submit">Salvar email</button>
+        </form>
+
+        <form id="passwordForm" class="mini-form">
+          <h3 class="section-title">Alterar senha</h3>
+          <label for="novaSenha">Nova senha</label>
+          <input id="novaSenha" name="novaSenha" type="password" required />
+          <label for="confirmarSenha">Confirmar nova senha</label>
+          <input id="confirmarSenha" name="confirmarSenha" type="password" required />
+          <button class="small-btn" type="submit">Salvar senha</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+
+    <footer class="site-footer" aria-label="Rodap&eacute; do site">
+    <p class="site-footer__brand">JPG Sounds</p>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/jpgoncalvezz" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jpgoncalvezz" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="contact.html" data-contact-trigger>Contato</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/global-player.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/contact-modal.js"></script>
+  <script src="assets/js/contracts.js"></script>
+  <script src="assets/js/account.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

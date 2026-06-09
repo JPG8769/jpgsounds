@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licen&ccedil;as | JPG Sounds</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+    <a class="brand" href="index.html" aria-label="Ir para o in&iacute;cio">JPG</a>
+    <div class="nav-center" aria-label="Links principais">
+      <a class="center-link" href="beats.html">Beats</a>
+      <a class="center-link is-active" href="licenses.html">Licen&ccedil;as</a>
+      <a class="center-link" href="contact.html">Contato</a>
+    </div>
+
+    <div class="actions" role="group" aria-label="A&ccedil;&otilde;es">
+      <button class="icon-btn" id="searchButton" aria-label="Buscar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6" />
+          <path d="M20 20l-4.2-4.2" />
+        </svg>
+      </button>
+
+      <div class="user-menu">
+        <button class="icon-btn" id="userMenuButton" aria-label="Perfil" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M6 19a6 6 0 0 1 12 0" />
+          </svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown"></div>
+      </div>
+
+      <form class="search-form" id="searchForm" role="search" action="#" method="get">
+        <input id="searchInput" class="search-input" type="search" name="q" placeholder="Pesquisar..." autocomplete="off" />
+      </form>
+    </div>
+  </nav>
+
+  <main class="page-main licenses-main">
+    <section class="license-picker license-showcase" aria-labelledby="licenseTitle">
+      <div class="license-showcase__head">
+        <h1 class="beats-heading" id="licenseTitle">Licen&ccedil;as</h1>
+        <p>Escolha o formato de uso do beat. Passe o mouse para abrir os detalhes.</p>
+      </div>
+
+      <div class="license-accordion" aria-label="Tipos de licen&ccedil;a">
+        <article class="license-panel">
+          <div class="license-panel__rail">
+            <span>MP3</span>
+            <strong>R$120</strong>
+          </div>
+          <div class="license-panel__content">
+            <h2>MP3</h2>
+            <p class="price">R$120,00</p>
+            <p class="license-intro">Arquivo MP3 320kbps para grava&ccedil;&atilde;o e lan&ccedil;amento.</p>
+            <ul class="license-features">
+              <li>Uso comercial permitido</li>
+              <li>Distribui&ccedil;&atilde;o em plataformas digitais</li>
+              <li>Uso em v&iacute;deos e redes sociais</li>
+              <li>Beat n&atilde;o exclusivo</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="license-panel">
+          <div class="license-panel__rail">
+            <span>WAV</span>
+            <strong>R$150</strong>
+          </div>
+          <div class="license-panel__content">
+            <h2>WAV</h2>
+            <p class="price">R$150,00</p>
+            <p class="license-intro">Arquivo WAV em alta qualidade para melhor mixagem.</p>
+            <ul class="license-features">
+              <li>Qualidade m&aacute;xima para grava&ccedil;&atilde;o</li>
+              <li>Uso comercial permitido</li>
+              <li>Distribui&ccedil;&atilde;o em plataformas digitais</li>
+              <li>Uso em v&iacute;deos e redes sociais</li>
+              <li>Beat n&atilde;o exclusivo</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="license-panel">
+          <div class="license-panel__rail">
+            <span>STEMS</span>
+            <strong>R$400</strong>
+          </div>
+          <div class="license-panel__content">
+            <h2>STEMS</h2>
+            <p class="price">R$400,00</p>
+            <p class="license-intro">WAV completo + arquivos separados do beat.</p>
+            <ul class="license-features">
+              <li>Stems separados (drums, melody, bass etc.)</li>
+              <li>Controle total da mixagem</li>
+              <li>Uso comercial permitido</li>
+              <li>Distribui&ccedil;&atilde;o em plataformas digitais</li>
+              <li>Beat n&atilde;o exclusivo</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="license-panel">
+          <div class="license-panel__rail">
+            <span>EXCLUSIVE</span>
+            <strong>Deal</strong>
+          </div>
+          <div class="license-panel__content">
+            <h2>EXCLUSIVE</h2>
+            <p class="price">A negociar</p>
+            <p class="license-intro">Licen&ccedil;a exclusiva para controle total do beat.</p>
+            <ul class="license-features">
+              <li>WAV + MP3 + STEMS</li>
+              <li>Beat removido da loja ap&oacute;s compra</li>
+              <li>Uso comercial permitido</li>
+              <li>Distribui&ccedil;&atilde;o em plataformas digitais</li>
+              <li>Controle total do beat</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Rodap&eacute; do site">
+    <p class="site-footer__brand">JPG Sounds</p>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/jpgoncalvezz" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jpgoncalvezz" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="contact.html" data-contact-trigger>Contato</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/global-player.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/contact-modal.js"></script>
+  <script src="assets/js/contracts.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

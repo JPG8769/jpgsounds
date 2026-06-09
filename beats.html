@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beats | JPG Sounds</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("jpg_theme") === "dark") {
+          document.documentElement.classList.add("theme-dark");
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+    <a class="brand" href="index.html" aria-label="Ir para o in&iacute;cio">JPG</a>
+    <div class="nav-center" aria-label="Links principais">
+      <a class="center-link is-active" href="beats.html">Beats</a>
+      <a class="center-link" href="licenses.html">Licen&ccedil;as</a>
+      <a class="center-link" href="contact.html">Contato</a>
+    </div>
+
+    <div class="actions" role="group" aria-label="A&ccedil;&otilde;es">
+      <button class="icon-btn" id="searchButton" aria-label="Buscar">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6" />
+          <path d="M20 20l-4.2-4.2" />
+        </svg>
+      </button>
+<div class="user-menu">
+        <button class="icon-btn" id="userMenuButton" aria-label="Perfil" aria-haspopup="true" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M6 19a6 6 0 0 1 12 0" />
+          </svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown"></div>
+      </div>
+
+      <form class="search-form" id="searchForm" role="search" action="#" method="get">
+        <input id="searchInput" class="search-input" type="search" name="q" placeholder="Pesquisar..." autocomplete="off" />
+      </form>
+    </div>
+  </nav>
+
+  <main class="page-main beats-main">
+    <div class="beats-head">
+      <h1 class="beats-heading">Beats</h1>
+      <p class="beats-count" id="beatsCount" aria-live="polite"></p>
+    </div>
+
+    <section class="beats-search" aria-label="Buscar beats">
+      <label class="beats-search__query">
+        <span>Buscar</span>
+        <input id="beatSearchInput" type="search" placeholder="Nome, tag ou tom" autocomplete="off" />
+      </label>
+
+      <div class="beats-search__bpm" aria-label="Filtro por BPM">
+        <label>
+          <span>BPM min</span>
+          <input id="beatBpmMin" type="number" min="1" inputmode="numeric" placeholder="120" />
+        </label>
+        <label>
+          <span>BPM max</span>
+          <input id="beatBpmMax" type="number" min="1" inputmode="numeric" placeholder="140" />
+        </label>
+      </div>
+
+      <div class="beats-search__quick" aria-label="Atalhos de BPM">
+        <button type="button" data-bpm-preset="clear">Limpar</button>
+      </div>
+    </section>
+
+    <div class="beats-grid"></div>
+  </main>
+
+  <footer class="site-footer" aria-label="Rodap&eacute; do site">
+    <p class="site-footer__brand">JPG Sounds</p>
+    <div class="site-footer__links">
+      <a href="https://www.instagram.com/jpgoncalvezz" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jpgoncalvezz" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="contact.html" data-contact-trigger>Contato</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/beats-data.js"></script>
+  <script src="assets/js/beats-store.js"></script>
+  <script src="assets/js/download-warning.js"></script>
+  <script src="assets/js/beats.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/global-player.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/contact-modal.js"></script>
+  <script src="assets/js/contracts.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
